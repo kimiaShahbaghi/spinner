@@ -1,0 +1,13 @@
+.spinner{
+    margin: 5rem auto;
+    width: 15rem;
+    height: 15rem;
+    border-radius: 50%;
+    list-style: none ;
+    background-color: red;
+    position: relative;
+    display: flex;
+    li{
+        list-style: none;
+    }
+}
