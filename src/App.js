@@ -1,13 +1,11 @@
-
-import './App.css';
-import Spinner from './components/Wheel';
-import ReactWheel from './components/rect-wheel/ReactWheel'
+import "./App.css";
+import Wheel from "./pages/wheel/index";
 
 function App() {
   return (
-<>
-<ReactWheel />
-</>
+    <>
+      <Wheel />
+    </>
   );
 }
 

@@ -1,34 +1,23 @@
 import { createSlice } from "@reduxjs/toolkit";
 const initialState = {
-  message: '',
-  isLoading: false,
+  title: "",
+  description:'',
+  prizes: [],
 };
-const sentimentSlice = createSlice({
-  name: "sentiment",
+const wheelSlice = createSlice({
+  name: "wheel",
   initialState,
   reducers: {
-    setQuestion: (state, action) => {
-      state.question = action.payload;
-    },
-
-    setLoading: (state, action) => {
-      state.isLoading = action.payload;
-    },
-    clearQuestion: (state) => {
-      state.question = {};
+    setPrize: (state, action) => {
+      state.prizes = action.payload.prizes;
+      state.title = action.payload.title;
+      state.description = action.payload.description;
     },
   },
 });
 
-export const selectLoading = (state) => state.sentimentReducer.isLoading;
-export const selectQuestion = (state) => state.sentimentReducer.question;
+export const selectPrizes = (state) => state.wheelReducer.prizes;
 
-export const {
-  previousHandler,
-  sentimentHandler,
-  setQuestion,
-  setLoading,
-  clearQuestion,
-} = sentimentSlice.actions;
+export const { setPrize } = wheelSlice.actions;
 
-export default sentimentSlice.reducer;
+export default wheelSlice.reducer;
