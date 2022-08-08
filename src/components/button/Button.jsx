@@ -4,7 +4,7 @@ import './Button.scss'
 const Button = (props) => {
     const text = props.text;
   return (
-    <button className='button'> ... </button>
+    <button className='button'> چرخاندن گردونه</button>
   )
 }
 

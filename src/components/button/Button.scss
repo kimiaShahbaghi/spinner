@@ -1,15 +1,9 @@
 button {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  padding: 4px 16px;
-  gap: 8px;
-
   width: 328px;
   height: 48px;
-
+  font-size: 1rem;
   background: #7c4dff;
+  color: #FFFFFF;
   border-radius: 8px;
-  border: none
+  border: none;
 }

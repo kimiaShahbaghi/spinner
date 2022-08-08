@@ -10,7 +10,7 @@ function* GetDataFetch() {
   yield put(setPrize({
     prizes: response.data['campaign_wheels'],
     title: response.data['campaign_config'].message.title,
-    description: response.data['campaign_config'].message.title
+    description: response.data['campaign_config'].message.description
   }));
   // yield put(setLoading(false));
 }
