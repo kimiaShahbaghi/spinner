@@ -1,31 +1,30 @@
-import { useEffect} from "react";
-import { useDispatch } from 'react-redux'
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import Button from "../../components/button/Button";
-import MyWheel from '../../components/wheel/Wheel'
+import Wheel from "../../components/wheel/Wheel";
+import Content from "../../components/content/Content";
 import { getDataFetch } from "../../redux/actions";
+import {selectTitle, selectDescription} from '../../redux/wheelSlice'
+
 import "./index.scss";
 
-const Wheel = () => {
-
+const Index = () => {
   const dispatch = useDispatch();
+
+  const title = useSelector(selectTitle)
+  const description = useSelector(selectDescription)
 
   useEffect(() => {
     dispatch(getDataFetch());
-  }, );
-
+  });
 
   return (
     <div className="app">
-      <MyWheel/>
-      <div className="app__content">
-        <h4> شانس خود را انتخاب کنید</h4>
-        <p>
-          گردونه شانس را بچرخانید و بسته یک روزه اینترنت همراه اول جایزه بگیرید{" "}
-        </p>
-      </div>
+      <Wheel />
+      <Content title={title} description={description} />
       <Button />
     </div>
   );
 };
 
-export default Wheel;
+export default Index;
