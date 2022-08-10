@@ -4,26 +4,30 @@ import Button from "../../components/button/Button";
 import Wheel from "../../components/wheel/Wheel";
 import Content from "../../components/content/Content";
 import { getDataFetch } from "../../redux/actions";
-import {selectTitle, selectDescription} from '../../redux/wheelSlice'
-
-import "./index.scss";
+import {
+  selectTitle,
+  selectDescription,
+  selectValid,
+} from "../../redux/wheelSlice";
 
 const Index = () => {
   const dispatch = useDispatch();
 
-  const title = useSelector(selectTitle)
-  const description = useSelector(selectDescription)
+  const title = useSelector(selectTitle);
+  const description = useSelector(selectDescription);
+  const valid = useSelector(selectValid);
+  console.log("valid", valid);
 
   useEffect(() => {
     dispatch(getDataFetch());
   });
 
   return (
-    <div className="app">
+    <>
       <Wheel />
       <Content title={title} description={description} />
       <Button />
-    </div>
+    </>
   );
 };
 
