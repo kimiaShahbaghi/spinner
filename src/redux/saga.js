@@ -4,6 +4,8 @@ import { setPrize, setValid, setPrizeIndex, setRotate } from "./wheelSlice";
 import { GET_DATA_FETCH, SPIN_WHEEL } from "./actions";
 import rotateToSpin from "../components/wheel/spin";
 
+const delay = (time) => new Promise((resolve) => setTimeout(resolve, time));
+
 function* GetDataFetch() {
   console.log("first line");
   const configResponse = yield call(api.config);
@@ -26,8 +28,9 @@ function* spin() {
   // const allocateResponse = yield call(api.allocate);
   const randomIndex = Math.floor(Math.random() * 6);
   console.log("random index", randomIndex);
+  yield put(setRotate(randomIndex));
+  yield call(delay, 2000);
   yield put(setPrizeIndex(randomIndex));
-  yield put(setRotate((18 - randomIndex) * 60));
 }
 
 function* rootSaga() {
