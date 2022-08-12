@@ -18,11 +18,10 @@ const Button = (props) => {
   const clickHandler = () => {
     if (isValid) {
       dispatch(spinWheel());
-      console.log("clicked");
     }
   };
   return (
-    <button className="button" onClick={() => dispatch(getDataFetch())}>
+    <button className="button" onClick={clickHandler}>
       {text ? text : buttonText}
     </button>
   );

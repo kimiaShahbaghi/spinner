@@ -1,7 +1,6 @@
 import React from "react";
 import Button from "../../components/button/Button";
 import Content from "../../components/content/Content";
-import "./index.scss";
 import { ReactComponent as ErrorSvg } from "../../assests/images/NetworkError.svg";
 
 const Index = () => {

@@ -18,9 +18,9 @@ const Index = () => {
   const valid = useSelector(selectValid);
   console.log("valid", valid);
 
-  useEffect(() => {
-    dispatch(getDataFetch());
-  });
+  // useEffect(() => {
+  //   dispatch(getDataFetch());
+  // });
 
   return (
     <>

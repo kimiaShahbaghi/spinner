@@ -2,18 +2,17 @@ import React, { useState } from "react";
 import WheelContainer from "../../assests/images/Ellipse 987.svg";
 import Pointer from "../../assests/images/Pointer.svg";
 import "./Wheel.scss";
-import { selectPrizes, selectRotate } from "../../redux/wheelSlice";
+import { selectPrizes, selectRotate, setRotate } from "../../redux/wheelSlice";
 import Blade from "./Blade/Blade";
-import { selectIsFinished } from "../../redux/wheelSlice";
-
-import spin from "./spin";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import prizes from "./spin";
 
 const Wheel = () => {
-  const prizes = useSelector(selectPrizes);
+  const dispatch = useDispatch();
+
+  // const prizes = useSelector(selectPrizes);
   const rotate = useSelector(selectRotate);
   const [finished, setFinished] = useState(false);
-  const [selectedBlade, setSelectedBlade] = useState(undefined);
 
   const renderBlades = () => {
     return prizes.map((prize, i) => {
@@ -30,20 +29,11 @@ const Wheel = () => {
     });
   };
 
-  // const spin = () => {
-  //   if (!finished) {
-  //     const randomRotate = 400;
-  //     setRotate(randomRotate);
-  //     console.log("rotate", randomRotate);
-  //     const index = Math.floor(6 - (((randomRotate / 360) * 6) % 6));
-  //     setSelectedBlade(index);
-  //     console.log("index", index);
-  //     setFinished(true);
-  //   } else {
-  //   }
-  // };
-  // spin();
-  
+  function rotateToSpin (prizeIndex)  {
+    return dispatch(setRotate(400));
+    //   const prizeIndex = useSelector(selectPrizeIndex);
+  };
+
   const wheelBlades = renderBlades();
 
   return (
@@ -53,6 +43,7 @@ const Wheel = () => {
         className={finished ? "wheel__container spin" : "wheel__container"}
         style={{
           transform: `rotate(${rotate}deg)`,
+          transition: 'all 2000ms ease-out'
         }}
       >
         <img src={WheelContainer} />
