@@ -1,22 +1,25 @@
-import React from "react";
+import React, { useState } from "react";
 import "./Button.scss";
 import { useDispatch, useSelector } from "react-redux";
 import {
-  selectIsFinished,
   selecButtonText,
+  selectSpinned,
   selectValid,
 } from "../../redux/wheelSlice";
-import { getDataFetch, spinWheel } from "../../redux/actions";
+import { spinWheel } from "../../redux/actions";
 
 const Button = (props) => {
   const dispatch = useDispatch();
-  // const isFinished = useSelector(selectIsFinished);
+
   const buttonText = useSelector(selecButtonText);
   const isValid = useSelector(selectValid);
+  const spinned = useSelector(selectSpinned);
+  const [spin, setSpin] = useState(spinned);
   const text = props.text;
 
   const clickHandler = () => {
-    if (isValid) {
+    if (isValid && !spin) {
+      setSpin(true);
       dispatch(spinWheel());
     }
   };

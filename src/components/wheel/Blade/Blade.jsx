@@ -1,5 +1,6 @@
 import React from "react";
-import './Blade.scss'
+import "./Blade.scss";
+
 const Blade = (props) => {
   const style = { transform: `rotate(${props.rotate}deg)` };
   return (

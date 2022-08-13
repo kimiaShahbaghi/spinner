@@ -6,7 +6,15 @@
   flex-direction: column;
   direction: rtl;
   gap: 0.5rem;
+  h4 {
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 28px;
+  }
   p {
     direction: rtl;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 24px;
   }
 }

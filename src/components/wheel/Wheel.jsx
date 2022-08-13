@@ -1,15 +1,14 @@
 import React, { useState } from "react";
 import WheelContainer from "../../assests/images/Ellipse 987.svg";
 import Pointer from "../../assests/images/Pointer.svg";
-import "./Wheel.scss";
-import { selectPrizes, selectRotate, setRotate } from "../../redux/wheelSlice";
+import { selectPrizes, selectRotate } from "../../redux/wheelSlice";
 import Blade from "./Blade/Blade";
-import { useSelector, useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
+import "./Wheel.scss";
 
 const Wheel = () => {
   const prizes = useSelector(selectPrizes);
   const rotate = useSelector(selectRotate);
-  const [finished, setFinished] = useState(false);
 
   const renderBlades = () => {
     return prizes.map((prize, i) => {
@@ -35,7 +34,7 @@ const Wheel = () => {
         className="wheel__container"
         style={{
           transform: `rotate(${rotate}deg)`,
-          transition: "all 2000ms ease-out",
+          transition: "all 3000ms ease-out",
         }}
       >
         <img src={WheelContainer} />
