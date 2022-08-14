@@ -9,6 +9,7 @@ const initialState = {
   buttonText: "چرخاندن گردونه",
   spinned: false,
   networkError: false,
+  playSound: false,
 };
 const wheelSlice = createSlice({
   name: "wheel",
@@ -23,6 +24,7 @@ const wheelSlice = createSlice({
       state.isValid = action.payload;
     },
     setRotate: (state, action) => {
+      state.playSound = true;
       state.rotate = (36 - action.payload + 1) * (360 / state.prizes.length);
       state.buttonText = "...";
     },
@@ -46,6 +48,7 @@ export const selectValid = (state) => state.wheelReducer.isValid;
 export const selectRotate = (state) => state.wheelReducer.rotate;
 export const selectSpinned = (state) => state.wheelReducer.spinned;
 export const selectError = (state) => state.wheelReducer.networkError;
+export const selectPlaySound = (state) => state.wheelReducer.playSound;
 
 export const {
   setPrize,

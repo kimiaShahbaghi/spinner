@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import WheelContainer from "../../assests/images/Ellipse 987.svg";
 import Pointer from "../../assests/images/Pointer.svg";
 import {
+  selectPlaySound,
   selectPrizes,
   selectRotate,
   selectSpinned,
@@ -9,6 +10,9 @@ import {
 import Blade from "./Blade/Blade";
 import { useSelector } from "react-redux";
 import Confetti from "react-confetti";
+import Sound from "react-sound";
+
+import spinSound from "../../assests/sound/spinning.mp3";
 
 import "./Wheel.scss";
 
@@ -16,6 +20,7 @@ const Wheel = () => {
   const prizes = useSelector(selectPrizes);
   const rotate = useSelector(selectRotate);
   const spinned = useSelector(selectSpinned);
+  const playSound = useSelector(selectPlaySound);
 
   const renderBlades = () => {
     return prizes.map((prize, i) => {
@@ -51,6 +56,7 @@ const Wheel = () => {
         }}
       >
         <img src={WheelContainer} />
+        <Sound url={spinSound} playStatus={playSound ? "PLAYING" : "STOPPED"} />
         <div className="wheel__blades">{wheelBlades}</div>
       </div>
     </div>
