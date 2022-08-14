@@ -7,7 +7,7 @@ const header = {
 const api = {
   config: async () => {
     return request({
-      url: "/config",
+      url: process.env.REACT_APP_CONFIG_URL,
       method: "POST",
       data: {
         campaign_id: 1,
@@ -16,7 +16,7 @@ const api = {
   },
   validate: async () => {
     return request({
-      url: "/validate",
+      url: process.env.REACT_APP_VALIDATE_URL,
       method: "POST",
       headers: header,
       data: {
@@ -27,7 +27,7 @@ const api = {
   },
   allocate: async () => {
     return request({
-      url: "/allocate",
+      url: process.env.REACT_APP_ALLOCATE_URL,
       method: "POST",
       headers: header,
       data: {

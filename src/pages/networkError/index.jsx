@@ -2,7 +2,7 @@ import React from "react";
 import Button from "../../components/button/Button";
 import Content from "../../components/content/Content";
 import { ReactComponent as ErrorSvg } from "../../assests/images/NetworkError.svg";
-import './index.scss'
+import "./index.scss";
 
 const Index = () => {
   const errorTitle = "مشکلی در ارتباط رخ داده است!";
@@ -11,8 +11,11 @@ const Index = () => {
 
   return (
     <>
-    <div className="svgContainer"> <ErrorSvg /></div>
-      
+      <div className="svgContainer">
+        {" "}
+        <ErrorSvg />
+      </div>
+
       <Content title={errorTitle} description={errorDescription} />
       <Button text={buttonText} />
     </>

@@ -12,7 +12,7 @@ const Wheel = () => {
 
   const renderBlades = () => {
     return prizes.map((prize, i) => {
-      const rotate = i * 60;
+      const rotate = i * (360 / prizes.length);
       return (
         <Blade
           id={prize.id}

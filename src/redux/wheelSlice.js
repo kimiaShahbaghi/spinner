@@ -23,7 +23,7 @@ const wheelSlice = createSlice({
       state.isValid = action.payload;
     },
     setRotate: (state, action) => {
-      state.rotate = (36 - action.payload + 1) * 60;
+      state.rotate = (36 - action.payload + 1) * (360 / state.prizes.length);
       state.buttonText = "...";
       state.spinned = true;
     },
