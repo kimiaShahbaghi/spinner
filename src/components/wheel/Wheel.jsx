@@ -1,14 +1,21 @@
 import React, { useState } from "react";
 import WheelContainer from "../../assests/images/Ellipse 987.svg";
 import Pointer from "../../assests/images/Pointer.svg";
-import { selectPrizes, selectRotate } from "../../redux/wheelSlice";
+import {
+  selectPrizes,
+  selectRotate,
+  selectSpinned,
+} from "../../redux/wheelSlice";
 import Blade from "./Blade/Blade";
 import { useSelector } from "react-redux";
+import Confetti from "react-confetti";
+
 import "./Wheel.scss";
 
 const Wheel = () => {
   const prizes = useSelector(selectPrizes);
   const rotate = useSelector(selectRotate);
+  const spinned = useSelector(selectSpinned);
 
   const renderBlades = () => {
     return prizes.map((prize, i) => {
@@ -29,6 +36,12 @@ const Wheel = () => {
 
   return (
     <div className="wheel">
+      <Confetti
+        run={spinned}
+        numberOfPieces={100}
+        recycle={false}
+        tweenDuration={7000}
+      />
       <img src={Pointer} id="pointer" />
       <div
         className="wheel__container"

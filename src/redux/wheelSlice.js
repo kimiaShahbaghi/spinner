@@ -25,9 +25,9 @@ const wheelSlice = createSlice({
     setRotate: (state, action) => {
       state.rotate = (36 - action.payload + 1) * (360 / state.prizes.length);
       state.buttonText = "...";
-      state.spinned = true;
     },
     setPrizeContent: (state, action) => {
+      state.spinned = true;
       state.title = action.payload.title;
       state.description = action.payload.description;
       state.buttonText = "متوجه شدم";
