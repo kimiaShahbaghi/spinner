@@ -12,6 +12,7 @@ import { GET_DATA_FETCH, SPIN_WHEEL } from "./actions";
 const delay = (time) => new Promise((resolve) => setTimeout(resolve, time));
 
 function* getData() {
+  console.log(' enter getdata')
   try {
     const configResponse = yield call(api.config);
     const data = configResponse.data.data;
@@ -35,11 +36,13 @@ function* getData() {
 }
 
 function* spin() {
+  console.log(' enter spin')
   try {
     const allocateResponse = yield call(api.allocate);
+    console.log('allocate response', allocateResponse)
     const data = allocateResponse.data.data;
     yield put(setRotate(data["slice_id"]));
-    yield call(delay, 3000);
+    yield call(delay, 6000);
     yield put(
       setPrizeContent({
         title: data.message.title,

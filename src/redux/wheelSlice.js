@@ -9,7 +9,6 @@ const initialState = {
   buttonText: "چرخاندن گردونه",
   spinned: false,
   networkError: false,
-  playSound: false,
 };
 const wheelSlice = createSlice({
   name: "wheel",
@@ -24,7 +23,6 @@ const wheelSlice = createSlice({
       state.isValid = action.payload;
     },
     setRotate: (state, action) => {
-      state.playSound = true;
       state.rotate = (36 - action.payload + 1) * (360 / state.prizes.length);
       state.buttonText = "...";
     },

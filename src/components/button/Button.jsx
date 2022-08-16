@@ -1,11 +1,13 @@
-import React, { useState } from "react";
+import React, { useState, useCallback } from "react";
 import "./Button.scss";
 import { useDispatch, useSelector } from "react-redux";
+import { debounce } from "lodash";
 import {
   selecButtonText,
   selectError,
   selectSpinned,
   selectValid,
+  setRotate,
 } from "../../redux/wheelSlice";
 import { getDataFetch, spinWheel } from "../../redux/actions";
 
@@ -19,16 +21,22 @@ const Button = (props) => {
   const [spin, setSpin] = useState(spinned);
   const text = props.text;
 
+  const delayGetData = useCallback(
+    debounce(() => dispatch(getDataFetch()), 2000)
+  );
+  const delaySpin = useCallback(debounce(() => dispatch(spinWheel()), 2000));
+
   const clickHandler = () => {
     if (isValid && !spin) {
+      dispatch(setRotate(6));
       setSpin(true);
       dispatch(spinWheel());
     }
     if (networkError) {
       if (!isValid) {
-        dispatch(getDataFetch());
+        delayGetData();
       } else {
-        dispatch(spinWheel());
+        delaySpin();
       }
     }
   };
